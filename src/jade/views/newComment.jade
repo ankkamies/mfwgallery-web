@@ -1,0 +1,8 @@
+div(ng-controller='NewCommentCtrl')
+  div(class='newmessage')
+    form(name='commentForm', role='form', novalidate)
+      div(class='form-group')
+        label(class='sr-only', for='commentInput') Uusi kommentti
+        input(type='text', class='form-control', id='commentInput', name='commentInput', placeholder='Kirjoita uusi kommentti', maxlength='200', ng-model='comment', required)
+    p(class='pull-left') {{ 200 - comment.length }}
+    button(class='pull-right btn btn-default', ng-disabled='commentForm.$invalid', ng-click='sendComment(post.id)') Lähetä

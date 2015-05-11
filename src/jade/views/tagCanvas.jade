@@ -1,0 +1,7 @@
+div(ng-controller='TagCanvas', class='canvas-container')
+  canvas(id='tagCanvas', width='600', height='200')
+  form(name='tagForm', role='form', novalidate)
+      div(class='form-group')
+        label(class='sr-only', for='tagInput') New tag:
+        input(type='text', class='form-control', id='tagInput', name='tagInput', placeholder='Add a new tag...', maxlength='200', ng-model='newTag', required)
+    button(class='pull-right btn btn-default', ng-disabled='tagForm.$invalid', ng-click='sendTag()') Lähetä

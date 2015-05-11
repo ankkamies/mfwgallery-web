@@ -1,0 +1,17 @@
+div(ng-controller='UserCtrl')
+  p {{ $scope.loggedUser()._id }}
+  ul(class='media-list')
+    li(class='media', ng-repeat='user in users')
+      a(class='pull-left', ng-href='#/details/{{ user.username }}')
+        img(class='media-object img-thumbnail', src='http://lorempizza.com/32/32', alt='Picture')
+      div(class='media-body')
+        h4(class='media-heading')
+          a(ng-href='#/details/{{ user.username }}', class='media-heading') {{user.username}}
+          button(type='button', class='btn btn-primary btn-xs pull-right', ng-click='addFriend(user)', ng-show='addingFriends && loggedUser().username !== undefined && !isFriend(user)')
+            span(class='glyphicon glyphicon-plus')
+            |  Lisää kaveriksi
+        p
+          | {{user.name}}
+  button(type='button', class='btn btn-primary', ng-click='toggleAddFriends()', ng-show='loggedUser().username !== undefined')
+    span(class='glyphicon glyphicon-plus')
+    |  Lisää kavereita

@@ -21,13 +21,13 @@ production   = process.env.NODE_ENV is 'production'
 
 config =
   scripts:
-    source: './src/coffee/main.coffee'
-    extensions: ['.coffee']
+    source: './src/js/app.js'
+    extensions: ['.js']
     destination: './public/js/'
     filename: 'bundle.js'
   templates:
-    source: './src/jade/*.jade'
-    watch: './src/jade/*.jade'
+    source: './src/jade/**/*.jade'
+    watch: './src/jade/**/*.jade'
     destination: './public/'
   styles:
     source: './src/stylus/style.styl'

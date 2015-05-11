@@ -16,7 +16,8 @@
     "template"
   ],
   "dependencies": {
-    "coffee-script": "~1.8.0"
+    "coffee-script": "~1.8.0",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "bower": "~1.3.5",
@@ -46,11 +47,23 @@
     "vinyl-source-stream": "~1.0.0",
     "watchify": "~2.3.0"
   },
+  "browser": {
+    "angular": "./bower_components/angular/angular.js",
+    "angular-route": "./bower_components/angular-route/angular-route.js",
+    "angular-cookies": "./bower_components/angular-cookies/angular-cookies.js",
+    "ui-bootstrap": "./bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
+    "angular-csrf-cross-domain": "./bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js",
+    "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js"
+  },
+  "browserify-shim": {
+    "angular": "angular",
+    "angular-route": "ngRoute",
+    "angular-cookies": "ngCookies",
+    "ui-bootstrap": "uiBootstrap"
+  },
   "browserify": {
     "transform": [
-      "coffeeify",
-      "debowerify",
-      "deamdify"
+      "browserify-shim"
     ]
   }
 }

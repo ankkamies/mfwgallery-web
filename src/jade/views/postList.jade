@@ -1,0 +1,14 @@
+div(class='item' ng-repeat='post in posts')
+  a(data-toggle="modal" data-image="{{post.image.file}}" href="#viewImage" class="open-FullImage")
+    img(ng-src="{{post.image.thumbnail}}")
+  p {{post.created}}
+  a(ng-href='#/details/{{post.username}}', class='media-heading') {{post.username}}: 
+  p {{post.description}}
+  a(href="#/posts/{{post.id}}") Details
+
+div("modal fade", id="viewImage", tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+  div.modal-dialog
+    div.modal-content
+      div.modal-body
+        img(id="imgUrl")
+

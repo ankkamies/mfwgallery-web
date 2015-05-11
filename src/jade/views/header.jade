@@ -1,0 +1,30 @@
+div(ng-controller='LoginCtrl', class='navbar navbar-inverse navbar-fixed-top', role='navigation')
+  div(class='container')
+    div(class='navbar-header')
+      button(type='button', class='navbar-toggle', ng-click='collapsed = !collapsed')
+        span(class='sr-only') Toggle navigation
+        span(class='icon-bar')
+        span(class='icon-bar')
+        span(class='icon-bar')
+      a(class='navbar-brand' href='#') MFWGallery
+    div(class='collapse navbar-collapse' collapse='collapsed')
+      ul(class='nav navbar-nav')
+        li
+          a(href='#/register') Register
+        li
+          a(href='#/gallery') Gallery
+        li
+          a(href='#/post') Post
+      ul(ng-show="loggedUser().username === undefined", class='nav navbar-nav')
+      form(ng-show="loggedUser().username === undefined", class='navbar-form navbar-right')
+        div(class='form-group')
+          input(ng-model='user.username', type='text', class='form-control', placeholder='Username')
+        div(class='form-group')
+          input(ng-model='user.password', type='password', class='form-control', placeholder='Password')
+        button(ng-click='login()', type='submit', class='btn btn-default') Submit
+      div(ng-show="loggedUser().username !== undefined" class='btn-group pull-right')
+        button(type='button', class='btn btn-default navbar-btn navbar-username') {{ loggedUser().username }}
+        a(href='#/details', class='btn btn-primary navbar-btn')
+          span(class='glyphicon glyphicon-cog')  Asetukset
+        button(ng-click='logout()', type='button', class='btn btn-primary navbar-btn')
+          span(class='glyphicon glyphicon-log-out')
