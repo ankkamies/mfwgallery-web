@@ -3,6 +3,9 @@
 module.exports = function($scope, postService) {
   $scope.tag = {};
   $scope.tags = [];
+  $scope.newTag = '';
+
+  $scope.selectedTags = [];
 
   var c = document.getElementById("tagCanvas");
   var ctx = c.getContext("2d");
@@ -18,11 +21,18 @@ module.exports = function($scope, postService) {
 
   $scope.$on('postService:refreshTags', function() {
     $scope.tags = postService.returnTags();
-    console.log($scope.tags);
     for ($scope.tag in $scope.tags) {
       $scope.addCircle($scope.tags[$scope.tag]);
     }
   });
+
+  $scope.removeTag = function(tag) {
+    $scope.addCircle(tag);
+    $scope.tags.push(tag);
+    var index = $scope.selectedTags.indexOf(tag);
+    $scope.selectedTags.splice(index, 1);
+    $scope.post.tags.splice(index, 1);
+  }
 
   function random(min,max) {
     return Math.floor((Math.random() * max) + min);
@@ -66,12 +76,9 @@ module.exports = function($scope, postService) {
       ctx.textAlign = 'center';
       ctx.fillText(tag.text, tag.posX, tag.posY);
     };
-
-    console.log('added $scope.tag ' + tag.text);
   };
 
   $scope.sendTag = function () {
-    console.log('sendingTag');
     postService.sendTag($scope.newTag,
       function(err) {
         if (err !== null) {
@@ -131,9 +138,11 @@ module.exports = function($scope, postService) {
      for ($scope.tag in $scope.tags) {
       var dist = Math.sqrt(Math.pow($scope.tags[$scope.tag].posX - mousePos.x, 2) + Math.pow($scope.tags[$scope.tag].posY - mousePos.y, 2));
       if (dist < $scope.tags[$scope.tag].radius) {
-        console.log($scope.post);
+        console.log($scope.selectedTags);
         $scope.post.tags.push($scope.tags[$scope.tag].text);
+        $scope.selectedTags.push({text: $scope.tags[$scope.tag].text, faces: $scope.tags[$scope.tag].faces});
         $scope.tags.splice($scope.tag, 1);
+        $scope.$apply();
       } else {
 
       }

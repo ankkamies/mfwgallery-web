@@ -52,7 +52,7 @@ module.exports = function($http, $rootScope, $cookies, $timeout, $browser, share
     },
 
     register: function(user, callback) {
-      $http.post(sharedDataFactory.api + '/users/', user)
+      $http.post(sharedDataFactory.api + '/auth/register/', user)
       .success(function(data) {
         callback(null);
       })

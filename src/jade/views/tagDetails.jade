@@ -1,0 +1,6 @@
+div(class='container')
+  div(class='row')
+    p Posts tagged with 
+      span(class='label label-primary') {{tag.text}}
+  div(class='row')
+    div(ng-include="'views/postList.html'")

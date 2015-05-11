@@ -92,7 +92,7 @@ gulp.task 'styles', ->
 
 gulp.task 'assets', ->
   gulp
-    .src config.assets.source
+    .src [config.assets.source,'bower_components/bootstrap/dist/fonts*/*','bower_components/bootstrap/dist/css*/*.map']
     .pipe gulp.dest config.assets.destination
 
 gulp.task 'server', ->

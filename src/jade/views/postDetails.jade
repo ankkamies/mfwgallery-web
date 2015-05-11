@@ -3,6 +3,9 @@ div(class='container')
     div.jumbotron
       img(ng-src='{{post.image.file}}', style='width: 100%;')
   div(class='row')
+    a(class='btn btn-default', href='#/tags/{{tag}}', ng-repeat='tag in post.tags') {{tag}}
+    p
+  div(class='row')
     div(ng-include="'views/commentList.html'")
   div(class='row')
     div(ng-include="'views/newComment.html'")

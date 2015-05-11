@@ -1,10 +1,11 @@
 'use strict';
 
-var angular     = require('angular'),
-    ngRoute     = require('angular-route'),
-    ngCookies   = require('angular-cookies'),
-    ngFileUpload    = require('ng-file-upload'),
-    uiBootstrap = require('ui-bootstrap');
+var angular      = require('angular'),
+    ngRoute      = require('angular-route'),
+    ngCookies    = require('angular-cookies'),
+    ngFileUpload = require('ng-file-upload'),
+    ipCookie     = require('angular-cookie'),
+    uiBootstrap  = require('ui-bootstrap');
 
 var $ = require('jquery');
 
@@ -35,10 +36,12 @@ module.controller('NewCommentCtrl', ['$scope', 'authFactory', 'postService', req
 module.controller('NewPostCtrl', ['$scope', 'Upload', 'authFactory', 'postService', require('./controllers/newPostCtrl')]);
 module.controller('UserDetailsCtrl', ['$scope', '$routeParams', 'postService', 'authFactory', 'userService', require('./controllers/UserDetailsCtrl')]);
 module.controller('PostDetailsCtrl', ['$scope', '$routeParams', 'postService', require('./controllers/PostDetailsCtrl')]);
-module.controller('GalleryCtrl', ['$scope', '$routeParams', 'postService', 'authFactory', require('./controllers/GalleryCtrl')]);
+module.controller('TagDetailsCtrl', ['$scope', '$routeParams', 'postService', require('./controllers/TagDetailsCtrl')]);
+module.controller('GalleryCtrl', ['$scope', '$routeParams', '$modal', 'postService', 'authFactory', require('./controllers/GalleryCtrl')]);
+module.controller('ModalCtrl', ['$scope', '$modalInstance', 'image', require('./controllers/ModalCtrl')]);
 module.controller('TagCanvas', ['$scope', 'postService', require('./controllers/TagCanvas')]);
 
-module.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider, $cookies) {
+module.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider, $authProvider) {
   $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   $httpProvider.defaults.xsrfCookieName = 'csrftoken';
   $httpProvider.defaults.withCredentials = true;
@@ -68,6 +71,10 @@ module.config(['$routeProvider', '$httpProvider', function($routeProvider, $http
   .when('/post', {
     templateUrl: 'views/newPost.html',
     controller: 'NewPostCtrl'
+  })
+  .when('/tags/:tag', {
+    templateUrl: 'views/tagDetails.html',
+    controller: 'TagDetailsCtrl'
   })
   .when('/details', {
     templateUrl: 'views/userInfo.html',

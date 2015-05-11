@@ -6,7 +6,6 @@ module.exports = function($scope, Upload, authFactory, postService) {
   $scope.progress = 0.0;
 
   $scope.post.tags = [];
-
   $scope.post.image = {};
 
   $scope.uploadImage = function () {
@@ -16,8 +15,7 @@ module.exports = function($scope, Upload, authFactory, postService) {
       },
       function(image) {
         $scope.post.image = image.id;
-        console.log($scope.post.image)
-      }, function(err) {
+      }, function(err, image) {
         if (err !== null) {
           console.log(err);
         } else {

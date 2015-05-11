@@ -8,6 +8,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   var post = {};
 
   var tags = [];
+  var tag = {};
 
   this.fetchPosts = function() {
   	$http.get(sharedDataFactory.api + '/faces/')
@@ -53,13 +54,25 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
     .error(function(data) {
       console.log(data);
     });
-  }
+  };
+
+  this.fetchTag = function(tagId) {
+    $http.get(sharedDataFactory.api + '/tags/' + tagId + '/')
+    .success(function(data) {
+      tag = data;
+      console.log(tag);
+      $rootScope.$broadcast('postService:refreshTag');
+    })
+    .error(function(data) {
+      console.log(data);
+    });
+  };
 
   this.sendComment = function(post, text, callback) {
     $http.post(sharedDataFactory.api + '/faces/' + post + '/comments/',
                {'text': text})
     .success(function(data) {
-      console.log(data);
+      callback(null);
       $rootScope.$broadcast('postService:refresh');
     })
     .error(function(data) {
@@ -68,11 +81,10 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   };
 
   this.sendTag = function(text, callback) {
-    console.log('sendtaginservice')
     $http.post(sharedDataFactory.api + '/tags/',
                {'text': text})
     .success(function(data) {
-      console.log(data);
+      callback(null);
       $rootScope.$broadcast('postService:refresh');
     })
     .error(function(data) {
@@ -83,7 +95,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   this.sendPost = function(post, callback) {
     $http.post(sharedDataFactory.api + '/faces/', post)
     .success(function(data) {
-      console.log(data);
+      callback(null);
       $rootScope.$broadcast('postService:refresh');
     })
     .error(function(data) {
@@ -106,6 +118,10 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
 
   this.returnTags = function() {
     return tags;
+  };
+
+  this.returnTag = function() {
+    return tag;
   };
 
   this.returnPosts = function() {

@@ -51,15 +51,18 @@
     "angular": "./bower_components/angular/angular.js",
     "angular-route": "./bower_components/angular-route/angular-route.js",
     "angular-cookies": "./bower_components/angular-cookies/angular-cookies.js",
+    "angular-cookie": "./bower_components/angular-cookie/angular-cookie.js",
     "ui-bootstrap": "./bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
     "angular-csrf-cross-domain": "./bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js",
-    "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js"
+    "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js",
+    "ng-token-auth": "./bower_components/ng-token-auth/dist/ng-token-auth.js"
   },
   "browserify-shim": {
     "angular": "angular",
     "angular-route": "ngRoute",
     "angular-cookies": "ngCookies",
-    "ui-bootstrap": "uiBootstrap"
+    "ui-bootstrap": "uiBootstrap",
+    "ng-token-auth": "ngTokenAuth"
   },
   "browserify": {
     "transform": [

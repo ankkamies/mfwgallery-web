@@ -30,11 +30,11 @@ module.exports = function($http, $rootScope, sharedDataFactory) {
     });
   };
 
-  this.fetchUserMessages = function(user) {
+  this.fetchUserPosts = function(user) {
     $http.get(sharedDataFactory.api + '/users/' + user.username + '/faces/')
     .success(function(data) {
       messages = data;
-      $rootScope.$broadcast('userService:refreshMessages');
+      $rootScope.$broadcast('userService:refreshUserPosts');
     })
     .error(function(data) {
       console.log(data);
@@ -49,7 +49,7 @@ module.exports = function($http, $rootScope, sharedDataFactory) {
     return user;
   };
 
-  this.returnUserMessages = function() {
+  this.returnUserPosts = function() {
     return messages;
   };
 

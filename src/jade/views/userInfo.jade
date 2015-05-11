@@ -1,22 +1,26 @@
 div(class='container')
   form(name='infoForm', class='form-horizontal' role='form', novalidate)
     div(class='form-group', ng-class="{'has-error': infoForm.usernameInput.$invalid && infoForm.usernameInput.$dirty, 'has-success': infoForm.usernameInput.$valid}")
-      label(for='usernameInput' class='col-sm-2 control-label') Käyttäjänimi
+      label(for='usernameInput' class='col-sm-2 control-label') Username
       div(class='col-sm-4')
-        input(ng-disabled='loggedUser().username !== undefined', type='text', class='form-control', id='usernameInput', name='usernameInput', placeholder='Käyttäjänimi', ng-maxlength='30', ng-model='user.username', required)
+        input(ng-disabled='loggedUser().username !== undefined', type='text', class='form-control', id='usernameInput', name='usernameInput', placeholder='Username', ng-maxlength='30', ng-model='user.username', required)
     div(class='form-group', ng-class="{'has-error': infoForm.nameInput.$invalid && infoForm.nameInput.$dirty, 'has-success': infoForm.nameInput.$valid}")
-      label(for='nameInput' class='col-sm-2 control-label') Nimi
+      label(for='firstNameInput' class='col-sm-2 control-label') First name
       div(class='col-sm-4')
-        input(type='text', class='form-control', id='nameInput', name='nameInput', placeholder='Nimi', ng-maxlength='100', ng-model='user.name', required)
+        input(type='text', class='form-control', id='firstNameInput', name='firstNameInput', placeholder='First name', ng-maxlength='100', ng-model='user.first_name')
+    div(class='form-group', ng-class="{'has-error': infoForm.nameInput.$invalid && infoForm.nameInput.$dirty, 'has-success': infoForm.nameInput.$valid}")
+      label(for='lastNameInput' class='col-sm-2 control-label') Last name
+      div(class='col-sm-4')
+        input(type='text', class='form-control', id='firstNameInput', name='firstNameInput', placeholder='Last name', ng-maxlength='100', ng-model='user.last_name')
     div(class='form-group', ng-class="{'has-error': infoForm.emailInput.$invalid && infoForm.emailInput.$dirty, 'has-success': infoForm.emailInput.$valid}")
-      label(for='emailInput' class='col-sm-2 control-label') Sähköposti
+      label(for='emailInput' class='col-sm-2 control-label') E-mail
       div(class='col-sm-4')
         input(type='email', class='form-control', id='emailInput', name='emailInput', placeholder='Email', ng-maxlength='100', ng-model='user.email', required)
     div(class='form-group', ng-class="{'has-errof': infoForm.passwordInput.$invalid && infoForm.passwordInput.$dirty, 'has-success': infoForm.passwordInput.$valid}")
-      label(for='passwordInput' class='col-sm-2 control-label') Salasana
+      label(for='passwordInput' class='col-sm-2 control-label') Password
       div(class='col-sm-4')
-        input(type='password', class='form-control', id='passwordInput', name='passwordInput', placeholder='Salasana', ng-maxlength='100', ng-model='user.password', required)
+        input(type='password', class='form-control', id='passwordInput', name='passwordInput', placeholder='Password', ng-maxlength='100', ng-model='user.password', required)
   button(type='button', class='pull-left btn btn-success', ng-click='send()', ng-disabled='infoForm.$invalid')
-    span(class='glyphicon glyphicon-ok')  Lähetä
+    span(class='glyphicon glyphicon-ok')  Send
   button(ng-show='loggedUser().username !== undefined', type='button', class='pull-right btn btn-danger', ng-click='remove()')
-    span(class='glyphicon glyphicon-trash')  Poista
+    span(class='glyphicon glyphicon-trash')  Remove

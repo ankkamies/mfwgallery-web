@@ -9,11 +9,11 @@ div(ng-controller='LoginCtrl', class='navbar navbar-inverse navbar-fixed-top', r
       a(class='navbar-brand' href='#') MFWGallery
     div(class='collapse navbar-collapse' collapse='collapsed')
       ul(class='nav navbar-nav')
-        li
+        li(ng-show='loggedUser().username === undefined')
           a(href='#/register') Register
         li
           a(href='#/gallery') Gallery
-        li
+        li(ng-hide='loggedUser().username === undefined')
           a(href='#/post') Post
       ul(ng-show="loggedUser().username === undefined", class='nav navbar-nav')
       form(ng-show="loggedUser().username === undefined", class='navbar-form navbar-right')
@@ -25,6 +25,6 @@ div(ng-controller='LoginCtrl', class='navbar navbar-inverse navbar-fixed-top', r
       div(ng-show="loggedUser().username !== undefined" class='btn-group pull-right')
         button(type='button', class='btn btn-default navbar-btn navbar-username') {{ loggedUser().username }}
         a(href='#/details', class='btn btn-primary navbar-btn')
-          span(class='glyphicon glyphicon-cog')  Asetukset
+          span(class='glyphicon glyphicon-cog') Profile
         button(ng-click='logout()', type='button', class='btn btn-primary navbar-btn')
           span(class='glyphicon glyphicon-log-out')
