@@ -2,10 +2,14 @@ div(class='container')
   div(class='row')
     div.jumbotron
       img(ng-src='{{post.image.file}}', style='width: 100%;')
+      p(ng-show='loggedUser().username !== post.username') {{post.description}}
+      input(type='text', ng-model='post.description', ng-show='loggedUser().username === post.username')
   div(class='row')
     a(class='btn btn-default', href='#/tags/{{tag}}', ng-repeat='tag in post.tags') {{tag}}
   div(class='row', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
-    button(class='btn btn-default', ng-click='remoovePost()') Remove post
+    div(ng-include="'views/tagCanvas.html'")
+  div(class='row', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
+    button(class='btn btn-default', ng-click='removePost()') Remove post
     button(class='btn btn-default', ng-click='updatePost()') Update post
   div(class='row')
     div(ng-include="'views/commentList.html'")

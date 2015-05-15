@@ -17,7 +17,7 @@ module.exports = function($scope, $routeParams, postService, authFactory) {
   }
 
   $scope.updatePost = function() {
-    postService.updatePost({id: $scope.post.id, tags: $scope.post.tags}, function(err) {
+    postService.updatePost({id: $scope.post.id, description: $scope.post.description, tags: $scope.post.tags}, function(err) {
       if (err !== null) {
       } else {
         postService.fetchPost($scope.post.id);

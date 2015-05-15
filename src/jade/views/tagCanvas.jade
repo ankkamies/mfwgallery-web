@@ -5,7 +5,7 @@ div(ng-controller='TagCanvas')
       label(class='sr-only', for='tagInput') New tag:
       input(type='text', class='form-control', id='tagInput', name='tagInput', placeholder='Add a new tag...', maxlength='200', ng-model='newTag', required)
     button(class='pull-right btn btn-default', ng-disabled='tagForm.$invalid', ng-click='sendTag()') Add tag
-    p Most popular tags:
+    p Add tags to post by double-clicking:
     canvas(id='tagCanvas', width='550', height='200')
     p Selected: 
       a(class='btn btn-primary', ng-repeat='tag in selectedTags', ng-click='removeTag(tag)') {{tag.text}}
