@@ -2,14 +2,14 @@
 Web application for MFWGallery
 
 # Installing
-This project requires node.js
+This project requires [Node.js](http://nodejs.org)
 
 Install required packages with npm:
 ```
 npm install
 ```
 
-Runnin a development server:
+Running a development server:
 ```
 npm start
 ```
