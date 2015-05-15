@@ -11,7 +11,7 @@ div(ng-controller='LoginCtrl', class='navbar navbar-inverse navbar-fixed-top', r
       ul(class='nav navbar-nav')
         li(ng-show='loggedUser().username === undefined')
           a(href='#/register') Register
-        li
+        li(ng-hide='loggedUser().username === undefined')
           a(href='#/gallery') Gallery
         li(ng-hide='loggedUser().username === undefined')
           a(href='#/post') Post

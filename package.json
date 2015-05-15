@@ -55,7 +55,8 @@
     "ui-bootstrap": "./bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
     "angular-csrf-cross-domain": "./bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js",
     "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js",
-    "ng-token-auth": "./bower_components/ng-token-auth/dist/ng-token-auth.js"
+    "ng-token-auth": "./bower_components/ng-token-auth/dist/ng-token-auth.js",
+    "jquery": "./bower_components/jquery/dist/jquery.js"
   },
   "browserify-shim": {
     "angular": "angular",

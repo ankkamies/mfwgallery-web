@@ -92,6 +92,16 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
     });
   };
 
+  this.updatePost = function(post, callback) {
+    $http.patch(sharedDataFactory.api + '/faces/' + post.id + '/', post)
+    .success(function(data) {
+      callback(null);
+    })
+    .error(function(data) {
+      callback(data);
+    });
+  };
+
   this.sendPost = function(post, callback) {
     $http.post(sharedDataFactory.api + '/faces/', post)
     .success(function(data) {
@@ -114,6 +124,20 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
         successCallback(data);
       }); 
     }
+  };
+
+  this.removePost = function(post, callback) {
+    $http({
+        method: 'DELETE', 
+        url: sharedDataFactory.api + '/faces/' + post.id + '/'
+    })
+    .success(function(data) {
+      callback(null);
+      $rootScope.$broadcast('postService:refresh');
+    })
+    .error(function(data) {
+      callback(data);
+    });
   };
 
   this.returnTags = function() {

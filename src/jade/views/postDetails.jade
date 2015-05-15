@@ -4,7 +4,9 @@ div(class='container')
       img(ng-src='{{post.image.file}}', style='width: 100%;')
   div(class='row')
     a(class='btn btn-default', href='#/tags/{{tag}}', ng-repeat='tag in post.tags') {{tag}}
-    p
+  div(class='row', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
+    button(class='btn btn-default', ng-click='remoovePost()') Remove post
+    button(class='btn btn-default', ng-click='updatePost()') Update post
   div(class='row')
     div(ng-include="'views/commentList.html'")
   div(class='row')

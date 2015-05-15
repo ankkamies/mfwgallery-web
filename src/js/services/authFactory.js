@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var $ = require('jquery');
-var Cookies = require('js-cookie')
 
 module.exports = function($http, $rootScope, $cookies, $timeout, $browser, sharedDataFactory, base64Factory) {
   // Current user object
