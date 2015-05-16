@@ -9,7 +9,7 @@ module.exports = function($scope, $routeParams, postService) {
 
   $scope.$on('postService:refreshTag', function() {
     $scope.tag = postService.returnTag();
-    $scope.posts = $scope.tag.faces;
+    $scope.posts = $scope.tag.posts;
   });
 
   $scope.$on('postService:refresh', function() {

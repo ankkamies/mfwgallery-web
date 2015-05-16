@@ -47,8 +47,7 @@ module.exports = function($scope, postService) {
     var dir = Math.atan2(h - tag.posY, w - tag.posX);
     tag.speedX = 10 * Math.cos(dir);
     tag.speedY = 10 * Math.sin(dir);
-    tag.facecount = tag.faces.length;
-    tag.radius = 10 + tag.facecount*5;
+    tag.radius = 10 + tag.posts.length*5;
     tag.color = 'blue';
     tag.hasCollided = false;
 
@@ -140,7 +139,7 @@ module.exports = function($scope, postService) {
       if (dist < $scope.tags[$scope.tag].radius) {
         console.log($scope.selectedTags);
         $scope.post.tags.push($scope.tags[$scope.tag].text);
-        $scope.selectedTags.push({text: $scope.tags[$scope.tag].text, faces: $scope.tags[$scope.tag].faces});
+        $scope.selectedTags.push({text: $scope.tags[$scope.tag].text, posts: $scope.tags[$scope.tag].posts});
         $scope.tags.splice($scope.tag, 1);
         $scope.$apply();
       } else {

@@ -11,7 +11,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   var tag = {};
 
   this.fetchPosts = function() {
-  	$http.get(sharedDataFactory.api + '/faces/')
+  	$http.get(sharedDataFactory.api + '/posts/')
   	.success(function(data) {
       posts = data;
       $rootScope.$broadcast('postService:refresh');
@@ -22,7 +22,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   };
 
   this.fetchPost = function(postId) {
-    $http.get(sharedDataFactory.api + '/faces/' + postId + '/')
+    $http.get(sharedDataFactory.api + '/posts/' + postId + '/')
     .success(function(data) {
       post = data;
       console.log(post);
@@ -34,7 +34,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   };
 
   this.fetchLatest = function() {
-    $http.get(sharedDataFactory.api + '/faces/')
+    $http.get(sharedDataFactory.api + '/posts/')
     .success(function(data) {
       posts = data;
       $rootScope.$broadcast('postService:refresh');
@@ -69,7 +69,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   };
 
   this.sendComment = function(post, text, callback) {
-    $http.post(sharedDataFactory.api + '/faces/' + post + '/comments/',
+    $http.post(sharedDataFactory.api + '/posts/' + post + '/comments/',
                {'text': text})
     .success(function(data) {
       callback(null);
@@ -93,7 +93,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   };
 
   this.updatePost = function(post, callback) {
-    $http.patch(sharedDataFactory.api + '/faces/' + post.id + '/', post)
+    $http.patch(sharedDataFactory.api + '/posts/' + post.id + '/', post)
     .success(function(data) {
       callback(null);
     })
@@ -103,7 +103,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   };
 
   this.sendPost = function(post, callback) {
-    $http.post(sharedDataFactory.api + '/faces/', post)
+    $http.post(sharedDataFactory.api + '/posts/', post)
     .success(function(data) {
       callback(null);
       $rootScope.$broadcast('postService:refresh');
@@ -129,7 +129,7 @@ module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory
   this.removePost = function(post, callback) {
     $http({
         method: 'DELETE', 
-        url: sharedDataFactory.api + '/faces/' + post.id + '/'
+        url: sharedDataFactory.api + '/posts/' + post.id + '/'
     })
     .success(function(data) {
       callback(null);
