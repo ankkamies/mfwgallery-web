@@ -2,7 +2,7 @@
   "name": "gulp-template",
   "version": "1.0.0",
   "description": "Project template for gulp.js",
-  "author": "Riku Rouvila <riku.rouvila@leonidasoy.fi>",
+  "author": "Touko Keski-Sämpi <ankkamiess@gmail.com>",
   "license": "MIT",
   "main": "gulpfile.js",
   "scripts": {
@@ -16,7 +16,6 @@
     "template"
   ],
   "dependencies": {
-    "coffee-script": "~1.8.0",
     "lodash": "~2.4.1"
   },
   "devDependencies": {
@@ -24,7 +23,6 @@
     "browser-sync": "~2.2.2",
     "browserify": "~6.1.0",
     "chalk": "~0.5.1",
-    "coffeeify": "~0.7.0",
     "deamdify": "^0.1.1",
     "debowerify": "~0.9.1",
     "ecstatic": "~0.5.3",
@@ -45,29 +43,26 @@
     "karma-jasmine": "~0.2.2",
     "pretty-hrtime": "~0.2.2",
     "vinyl-source-stream": "~1.0.0",
-    "watchify": "~2.3.0"
-  },
+    "watchify": "~2.3.0",
+    "browserify-shim": "^3.8.6"
+  },  
   "browser": {
     "angular": "./bower_components/angular/angular.js",
     "angular-route": "./bower_components/angular-route/angular-route.js",
     "angular-cookies": "./bower_components/angular-cookies/angular-cookies.js",
-    "angular-cookie": "./bower_components/angular-cookie/angular-cookie.js",
     "ui-bootstrap": "./bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
-    "angular-csrf-cross-domain": "./bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js",
-    "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js",
-    "ng-token-auth": "./bower_components/ng-token-auth/dist/ng-token-auth.js",
-    "jquery": "./bower_components/jquery/dist/jquery.js"
+    "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js"
   },
   "browserify-shim": {
     "angular": "angular",
     "angular-route": "ngRoute",
     "angular-cookies": "ngCookies",
-    "ui-bootstrap": "uiBootstrap",
-    "ng-token-auth": "ngTokenAuth"
+    "ui-bootstrap": "uiBootstrap"
   },
   "browserify": {
     "transform": [
-      "browserify-shim"
+      "browserify-shim",
+      "deamdify"
     ]
   }
 }

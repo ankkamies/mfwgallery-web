@@ -1,7 +1,6 @@
 'use strict';
 
 var _ = require('lodash');
-var $ = require('jquery')
 
 module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory) {
   var posts = [];

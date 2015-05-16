@@ -4,10 +4,8 @@ var angular      = require('angular'),
     ngRoute      = require('angular-route'),
     ngCookies    = require('angular-cookies'),
     ngFileUpload = require('ng-file-upload'),
-    ipCookie     = require('angular-cookie'),
+    ipCookie     = require('angular-cookies'),
     uiBootstrap  = require('ui-bootstrap');
-
-var $ = require('jquery');
 
 var module = angular.module('mfwgallery', ['ngRoute', 'ngCookies', 'ngFileUpload', 'ui.bootstrap']);
 
@@ -17,14 +15,6 @@ module.factory('sharedDataFactory', require('./services/sharedDataFactory'));
 module.factory('authFactory', ['$http', '$rootScope', '$cookies', '$timeout', '$browser', 'sharedDataFactory', 'base64Factory', require('./services/authFactory')]);
 module.service('postService', ['$http', '$rootScope', '$cookies', 'Upload', 'sharedDataFactory', require('./services/postService')]);
 module.service('userService', ['$http', '$rootScope', 'sharedDataFactory', require('./services/userService')]);
-
-module.factory('myInterceptor', ['$cookies', function ($cookies) {
-    return {
-        response: function (response) {
-            return response;
-        }
-    };
-}]);
 
 // Controllers
 module.controller('LoginCtrl', ['$scope', '$location', 'authFactory', require('./controllers/LoginCtrl')]);
@@ -42,12 +32,6 @@ module.controller('ModalCtrl', ['$scope', '$modalInstance', 'image', require('./
 module.controller('TagCanvas', ['$scope', 'postService', require('./controllers/TagCanvas')]);
 
 module.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider, $authProvider) {
-  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-  $httpProvider.defaults.withCredentials = true;
-
-  $httpProvider.interceptors.push('myInterceptor');
-
   $routeProvider.when('/', {
     templateUrl: 'views/main.html',
     controller: 'MainCtrl'
