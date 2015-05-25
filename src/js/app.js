@@ -14,7 +14,7 @@ var module = angular.module('mfwgallery', ['ngRoute', 'ngCookies', 'ngFileUpload
 // Services, factories and providers
 module.factory('base64Factory', require('./services/base64Factory'));
 module.factory('sharedDataFactory', require('./services/sharedDataFactory'));
-module.factory('authFactory', ['$http', '$rootScope', '$sessionStorage', '$timeout', 'sharedDataFactory', 'base64Factory', require('./services/authFactory')]);
+module.factory('authFactory', ['$http', '$rootScope', '$localStorage', '$timeout', 'sharedDataFactory', 'base64Factory', require('./services/authFactory')]);
 module.service('postService', ['$http', '$rootScope', 'Upload', 'sharedDataFactory', require('./services/postService')]);
 module.service('userService', ['$http', '$rootScope', 'sharedDataFactory', require('./services/userService')]);
 
