@@ -22,23 +22,23 @@ config = {
   scripts: {
     source: './src/js/app.js',
     extensions: ['.js'],
-    destination: '/home/users/ankkamies/sites/ankkamies.kapsi.fi/www/js/',
+    destination: './public/js/',
     filename: 'bundle.js'
   },
   templates: {
     source: './src/jade/**/*.jade',
     watch: './src/jade/**/*.jade',
-    destination: '/home/users/ankkamies/sites/ankkamies.kapsi.fi/www/'
+    destination: './public/'
   },
   styles: {
     source: './src/stylus/style.styl',
     watch: './src/stylus/*.styl',
-    destination: '/home/users/ankkamies/sites/ankkamies.kapsi.fi/www/css/'
+    destination: './public/css/'
   },
   assets: {
     source: './src/assets/**/*.*',
     watch: './src/assets/**/*.*',
-    destination: '/home/users/ankkamies/sites/ankkamies.kapsi.fi/www/'
+    destination: './public/'
   }
 };
 
