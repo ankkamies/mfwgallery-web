@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 
-module.exports = function($http, $rootScope, $cookies, Upload, sharedDataFactory) {
+module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
   var posts = [];
   var post = {};
 

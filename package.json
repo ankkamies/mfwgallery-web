@@ -52,8 +52,9 @@
     "angular-cookies": "./bower_components/angular-cookies/angular-cookies.js",
     "ui-bootstrap": "./bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
     "ng-file-upload": "./bower_components/ng-file-upload/ng-file-upload.js",
-    "ng-tags-input": "./bower_components/ng-tags-input/ng-tags-input.js"
-  },
+    "ng-tags-input": "./bower_components/ng-tags-input/ng-tags-input.js",
+    "ngStorage": "./bower_components/ngstorage/ngStorage.js"
+ },
   "browserify-shim": {
     "angular": "angular",
     "angular-route": "ngRoute",

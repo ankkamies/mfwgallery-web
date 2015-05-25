@@ -6,15 +6,16 @@ var angular      = require('angular'),
     ngFileUpload = require('ng-file-upload'),
     ipCookie     = require('angular-cookies'),
     ngTagsInput  = require('ng-tags-input'),
+    ngStorage    = require('ngStorage'),
     uiBootstrap  = require('ui-bootstrap');
 
-var module = angular.module('mfwgallery', ['ngRoute', 'ngCookies', 'ngFileUpload', 'ngTagsInput', 'ui.bootstrap']);
+var module = angular.module('mfwgallery', ['ngRoute', 'ngCookies', 'ngFileUpload', 'ngTagsInput', 'ngStorage', 'ui.bootstrap']);
 
 // Services, factories and providers
 module.factory('base64Factory', require('./services/base64Factory'));
 module.factory('sharedDataFactory', require('./services/sharedDataFactory'));
-module.factory('authFactory', ['$http', '$rootScope', '$cookies', '$timeout', '$browser', 'sharedDataFactory', 'base64Factory', require('./services/authFactory')]);
-module.service('postService', ['$http', '$rootScope', '$cookies', 'Upload', 'sharedDataFactory', require('./services/postService')]);
+module.factory('authFactory', ['$http', '$rootScope', '$sessionStorage', '$timeout', 'sharedDataFactory', 'base64Factory', require('./services/authFactory')]);
+module.service('postService', ['$http', '$rootScope', 'Upload', 'sharedDataFactory', require('./services/postService')]);
 module.service('userService', ['$http', '$rootScope', 'sharedDataFactory', require('./services/userService')]);
 
 // Controllers

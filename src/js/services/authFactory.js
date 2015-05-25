@@ -2,14 +2,14 @@
 
 var _ = require('lodash');
 
-module.exports = function($http, $rootScope, $cookies, $timeout, $browser, sharedDataFactory, base64Factory) {
+module.exports = function($http, $rootScope, $sessionStorage, $timeout, sharedDataFactory, base64Factory) {
   // Current user object
   var settings = {
     user: {},
   };
 
   // Initialize authentication headers
-  $http.defaults.headers.common.Authorization = '';
+  $http.defaults.headers.common.Authorization = 'Basic ';
 
   var clearUser = function() {
     for (var prop in settings.user) {
@@ -24,18 +24,19 @@ module.exports = function($http, $rootScope, $cookies, $timeout, $browser, share
       if (typeof user !== "undefined" && typeof pass !== "undefined") {
         var encoded = base64Factory.encode(user + ':' + pass);
         $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
-      } else if ($cookies.auth === null || $cookies.auth === "undefined") {
+      } else if ($sessionStorage.auth === null || $sessionStorage.auth === "undefined") {
         return;
+      } else {
+        $http.defaults.headers.common.Authorization = 'Basic ' + $sessionStorage.auth;
       }
-
       $http.post(sharedDataFactory.api + '/auth/login/')
       .success(function(data) {
-        $cookies.auth = encoded;
+        $sessionStorage.auth = encoded;
         settings.user = data;
         $rootScope.$broadcast('authFactory:login');
       })
       .error(function(data) {
-        $cookies.auth = "undefined";
+        $sessionStorage.auth = "undefined";
         clearUser();
         $http.defaults.headers.common.Authorization = '';
       });
@@ -44,7 +45,7 @@ module.exports = function($http, $rootScope, $cookies, $timeout, $browser, share
 
     logout: function() {
       $http.defaults.headers.common.Authorization = '';
-      $cookies.auth = "undefined";
+      $sessionStorage.auth = "undefined";
       clearUser();
       $rootScope.$broadcast('authFactory:logout');
     },
@@ -65,7 +66,7 @@ module.exports = function($http, $rootScope, $cookies, $timeout, $browser, share
         settings.user = data;
         var encoded = base64Factory.encode(user.username + ':' + user.password);
         $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
-        $cookies.auth = encoded;
+        $sessionStorage.auth = encoded;
         callback(null);
       })
       .error(function(data) {
@@ -77,7 +78,7 @@ module.exports = function($http, $rootScope, $cookies, $timeout, $browser, share
       $http({method: 'DELETE', url: sharedDataFactory.api + '/users/' + settings.user.id})
       .success(function(data) {
         $http.defaults.headers.common.Authorization = '';
-        $cookies.auth = "undefined";
+        $sessionStorage.auth = "undefined";
         clearUser();
         $rootScope.$broadcast('authFactory:logout');
         callback(null);
