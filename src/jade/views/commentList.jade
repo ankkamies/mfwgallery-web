@@ -1,4 +1,10 @@
-ul(class='list-group')
-  li(class='list-group-item', ng-repeat='comment in post.comments') 
-    a(ng-href='#/details/{{comment.user}}', class='media-heading') {{comment.user}}:
-      {{comment.text}}
+div(class='media' ng-repeat='comment in post.comments')
+  div(class='media-left media-top')
+    a(href='#/details/{{comment.user}}')
+      img(class='media-object', ng-src='{{post.image.thumbnail}}')
+  div(class='media-body')
+    h4(class='media-heading') 
+      a(href='#/details/{{comment.user}}') {{comment.user}} 
+      small {{comment.created}}
+    p {{comment.text}}
+

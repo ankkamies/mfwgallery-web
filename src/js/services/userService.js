@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 module.exports = function($http, $rootScope, sharedDataFactory) {
   var users = [];
-  var messages = [];
+  var posts = [];
   var user = {};
 
   this.fetchUsers = function() {
@@ -31,9 +31,9 @@ module.exports = function($http, $rootScope, sharedDataFactory) {
   };
 
   this.fetchUserPosts = function(user) {
-    $http.get(sharedDataFactory.api + '/users/' + user.username + '/faces/')
+    $http.get(sharedDataFactory.api + '/users/' + user.username + '/posts/')
     .success(function(data) {
-      messages = data;
+      posts = data;
       $rootScope.$broadcast('userService:refreshUserPosts');
     })
     .error(function(data) {
@@ -50,7 +50,7 @@ module.exports = function($http, $rootScope, sharedDataFactory) {
   };
 
   this.returnUserPosts = function() {
-    return messages;
+    return posts;
   };
 
 };

@@ -1,6 +1,8 @@
 div(class='container')
   div(class='row')
-    p Posts tagged with 
-      span(class='label label-primary') {{tag.text}}
+    div(class='col-xs-12')
+      p Posts tagged with 
+        span(class='label label-primary') {{tag.text}}
   div(class='row')
-    div(ng-include="'views/postList.html'")
+    div(class='col-xs-12')
+      div(ng-include="'views/postList.html'")
