@@ -2,7 +2,7 @@ module.exports = function() {
     'use strict';
 
     var sharedData = {
-      api: 'http://127.0.0.1:8000/api',
+      api: 'http://ankkamies.kapsi.fi/api',
       csrf_token: ''
     };
 
