@@ -5,9 +5,10 @@ var angular      = require('angular'),
     ngCookies    = require('angular-cookies'),
     ngFileUpload = require('ng-file-upload'),
     ipCookie     = require('angular-cookies'),
+    ngTagsInput  = require('ng-tags-input'),
     uiBootstrap  = require('ui-bootstrap');
 
-var module = angular.module('mfwgallery', ['ngRoute', 'ngCookies', 'ngFileUpload', 'ui.bootstrap']);
+var module = angular.module('mfwgallery', ['ngRoute', 'ngCookies', 'ngFileUpload', 'ngTagsInput', 'ui.bootstrap']);
 
 // Services, factories and providers
 module.factory('base64Factory', require('./services/base64Factory'));
@@ -29,7 +30,6 @@ module.controller('PostDetailsCtrl', ['$scope', '$routeParams', 'postService', '
 module.controller('TagDetailsCtrl', ['$scope', '$routeParams', 'postService', require('./controllers/TagDetailsCtrl')]);
 module.controller('GalleryCtrl', ['$scope', '$routeParams', '$modal', 'postService', 'authFactory', require('./controllers/GalleryCtrl')]);
 module.controller('ModalCtrl', ['$scope', '$modalInstance', 'image', require('./controllers/ModalCtrl')]);
-module.controller('TagCanvas', ['$scope', 'postService', require('./controllers/TagCanvas')]);
 
 module.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider, $authProvider) {
   $routeProvider.when('/', {

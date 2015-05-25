@@ -26,6 +26,7 @@ module.exports = function($scope, Upload, authFactory, postService) {
   };
 
   $scope.sendPost = function () {
+    $scope.post.tags = $scope.tags.map(function(tag) { return tag.text; });
     postService.sendPost($scope.post, function(err) {
         if (err !== null) {
           console.log(err);

@@ -8,7 +8,7 @@ div(class='container')
             button(class="btn btn-primary", type='button', ng-click='sendPost()', ng-disabled='image[0] == null || postForm.$invalid') Post
       div(class='row')
         div(class='col-xs-12')
-          div(ng-include="'views/tagCanvas.html'") 
+          tags-input(ng-model='tags') 
     div(class='col-xs-6')
       div(ngf-drop, ngf-select, ng-model='image', accept='image/*', ngf-multiple='false', ngf-drag-over-class='dragover')
         img(ngf-src='image[0]', ng-show='image[0] != null', class='thumbnail', style='width: 100%;')
