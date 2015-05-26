@@ -1,9 +1,8 @@
 'use strict';
 
-module.exports = function($scope, Upload, authFactory, postService) {
+module.exports = function($scope, $location, Upload, authFactory, postService) {
   $scope.post = {};
   $scope.loggedUser = authFactory.getUser;
-  $scope.progress = 0.0;
   $scope.showLoader = false;
 
   $scope.post.tags = [];
@@ -21,10 +20,6 @@ module.exports = function($scope, Upload, authFactory, postService) {
         if (err !== null) {
           console.log(err);
         } else {
-          postService.fetchPosts();
-          $scope.post = null;
-          $scope.image = null;
-          $scope.tags = null;
           $scope.showLoader = false;
         }
       }
@@ -38,7 +33,7 @@ module.exports = function($scope, Upload, authFactory, postService) {
           console.log(err);
         } else {
           postService.fetchPosts();
-          $scope.post = null;
+          $location.path('/gallery');
         }
       });
   };

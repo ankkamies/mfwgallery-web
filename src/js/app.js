@@ -25,7 +25,7 @@ module.controller('UserCtrl', ['$scope', '$interval', 'authFactory', 'userServic
 module.controller('UserDetailsCtrl', ['$scope', '$location', 'authFactory', require('./controllers/UserDetailCtrl')]);
 module.controller('RegisterCtrl', ['$scope', '$location', 'authFactory', require('./controllers/RegisterCtrl')]);
 module.controller('NewCommentCtrl', ['$scope', 'authFactory', 'postService', require('./controllers/NewCommentCtrl')]);
-module.controller('NewPostCtrl', ['$scope', 'Upload', 'authFactory', 'postService', require('./controllers/NewPostCtrl')]);
+module.controller('NewPostCtrl', ['$scope', '$location', 'Upload', 'authFactory', 'postService', require('./controllers/NewPostCtrl')]);
 module.controller('UserDetailsCtrl', ['$scope', '$routeParams', 'postService', 'authFactory', 'userService', require('./controllers/UserDetailsCtrl')]);
 module.controller('PostDetailsCtrl', ['$scope', '$routeParams', 'postService', 'authFactory', require('./controllers/PostDetailsCtrl')]);
 module.controller('TagDetailsCtrl', ['$scope', '$routeParams', 'postService', require('./controllers/TagDetailsCtrl')]);

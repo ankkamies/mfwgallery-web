@@ -14,9 +14,9 @@ div(class='container')
     div(class='col-md-6')
       div(ngf-drop, ngf-select, ng-model='image', accept='image/*', ngf-multiple='false', ngf-drag-over-class='dragover')
         img(ngf-src='image[0]', ng-show='image[0] != null && !showLoader', class='thumbnail', style='width: 100%;')
-        div(class='image-box', ng-hide='image[0] != null')
+        div(class='image-box', ng-show='image[0] == null || showLoader')
           i(class='fa fa-camera-retro fa-5x', ng-show='!showLoader')
-          div(class='spinner', ng-show='showLoader')
+          i(class='fa fa-camera-retro fa-5x fa-spin', ng-show='showLoader')
             div.rect1
             div.rect2
             div.rect3
