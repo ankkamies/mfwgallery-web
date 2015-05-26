@@ -100,7 +100,12 @@ gulp.task('styles', function() {
 });
 
 gulp.task('assets', function() {
-  return gulp.src([config.assets.source, 'bower_components/bootstrap/dist/fonts*/*', 'bower_components/bootstrap/dist/css*/*.map']).pipe(gulp.dest(config.assets.destination));
+  return gulp.src([
+  config.assets.source, 
+  'bower_components/bootstrap/dist/fonts*/*', 
+  'bower_components/bootstrap/dist/css*/*.map',
+  'bower_components/fontawesome/fonts*/*',
+  'bower_components/fontawesome/css*/*.map']).pipe(gulp.dest(config.assets.destination));
 });
 
 gulp.task('server', function() {

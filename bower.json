@@ -20,7 +20,8 @@
     "angular-ui-bootstrap-bower": "~0.13.0",
     "bootstrap": "~3.3.4",
     "ng-tags-input": "~2.3.0",
-    "ngstorage": "~0.3.4"
+    "ngstorage": "~0.3.4",
+    "fontawesome": "~4.3.0"
   },
   "homepage": "https://github.com/ankkamies/mfwgallery-web"
 }

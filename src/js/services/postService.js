@@ -118,9 +118,11 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
         url: sharedDataFactory.api + '/images/',
         file: image
       }).progress(function (evt) {
-        progressCallback(parseInt(100.0 * evt.loaded / evt.total));
+        progressCallback();
       }).success(function (data, status, headers, config) {
         successCallback(data);
+      }).error(function (data) {
+        callback(data);
       }); 
     }
   };

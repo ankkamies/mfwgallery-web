@@ -1,21 +1,25 @@
 div(class='container')
   div(class='row')
-    div(class='col-xs-6')
+    div(class='col-md-6')
       form(name='postForm', role='form')
         div(class='input-group')
           input(type='text', class='form-control', id='description', name='description', placeholder='Write a description...', ng-maxlength='200', ng-model='post.description', required)
           span(class='input-group-btn')
             button(class="btn btn-primary", type='button', ng-click='sendPost()', ng-disabled='image[0] == null || postForm.$invalid') Post
-      div(class='row')
-        div(class='col-xs-12')
-          tags-input(ng-model='tags') 
-    div(class='col-xs-6')
+        p
+        div(class='input-group')
+          span(class='input-group-addon') Tags:
+          tags-input(ng-model='tags')
+        p 
+    div(class='col-md-6')
       div(ngf-drop, ngf-select, ng-model='image', accept='image/*', ngf-multiple='false', ngf-drag-over-class='dragover')
-        img(ngf-src='image[0]', ng-show='image[0] != null', class='thumbnail', style='width: 100%;')
-        img(ng-src='/media/images/camera.png', ng-hide='image[0] != null', class='thumbnail', style='width: 100%')
-      div(class='row')
-        div(class='col-xs-12')
-          div(class="progress")
-            div(class="progress-bar", role='progressbar', aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;") {{progress}} %
-          button(class="btn btn-primary btn-block", ng-click='uploadImage()', ng-disabled='image[0] == null') Upload 
+        img(ngf-src='image[0]', ng-show='image[0] != null && !showLoader', class='thumbnail', style='width: 100%;')
+        div(class='image-box', ng-hide='image[0] != null')
+          i(class='fa fa-camera-retro fa-5x', ng-show='!showLoader')
+          div(class='spinner', ng-show='showLoader')
+            div.rect1
+            div.rect2
+            div.rect3
+            div.rect4
+            div.rect5
 
