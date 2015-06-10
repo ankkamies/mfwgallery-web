@@ -1,25 +1,39 @@
 div(class='container')
   div(class='row')
-    div(class='col-xs-12')
-      div.jumbotron
-        img(ng-src='{{post.image.file}}', style='width: 100%;')
-        p(ng-show='loggedUser().username !== post.username && loggedUser().username !== undefined') {{post.description}}
-        input(type='text', ng-model='post.description', ng-show='loggedUser().username === post.username')
-  div(class='row')
-    div(class='col-xs-12')
-      h4 Tags: 
-        a(class='btn btn-default', href='#/tags/{{tag}}', ng-repeat='tag in post.tags') {{tag}}
-  div(class='row', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
-    div(class='col-xs-12')    
-      div(ng-include="'views/tagCanvas.html'")
-  div(class='row', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
-    div(class='col-xs-12')
-      button(class='btn btn-danger', ng-click='removePost()') Remove post
-      button(class='btn btn-primary', ng-click='updatePost()') Update post
-  div(class='row')
-    div(class='col-xs-12')
-      h3 Comments:
-      div(ng-include="'views/commentList.html'")
-  div(class='row')
-    div(class='col-xs-12')
-      div(ng-include="'views/newComment.html'")
+    div(class='col-md-6')
+      div(class='thumbnail')
+        img(ng-src='{{post.image.file}}')
+        div(class='caption')
+          h3 
+            a(ng-href='#/details/{{post.username}}') {{post.username}}
+            small
+              p {{post.created | date:'medium'}}
+          hr
+          div(class='row')
+            div(class='col-xs-10')
+              p(ng-show='!showEditBox') {{post.description}}
+              div(class='form-group')
+                input(type='text', class='form-control', ng-model='post.description', ng-show='showEditBox')
+            div(class='col-xs-2')
+              button(class='btn btn-primary btn-sm pull-right', ng-model='showEditBox', btn-checkbox, btn-checkbox-true="true", btn-checkbox-false="false", ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
+                i(class='fa fa-pencil-square-o fa-lg')
+
+      p(ng-show='loggedUser().username !== post.username') Tags: 
+        a(class='label label-primary', href='#/tags/{{tag.text}}', ng-repeat='tag in post.tags') {{tag.text}}
+      div(class='input-group', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
+        span(class='input-group-addon') Tags:
+        tags-input(ng-model='post.tags')
+      p
+      div(class='row', ng-show='loggedUser().username !== undefined && loggedUser().username === post.username')
+        div(class='col-md-12')
+          button(class='btn btn-primary', ng-click='updatePost()') Update post
+          button(class='btn btn-danger pull-right', ng-click='removePost()') Remove post
+    div(class='col-md-6')
+      div(class='row')
+        div(class='col-md-12')
+          h3 Comments:
+          div(ng-include="'views/commentList.html'")
+      div(class='row')
+        div(class='col-md-12')
+          p
+          div(ng-include="'views/newComment.html'")

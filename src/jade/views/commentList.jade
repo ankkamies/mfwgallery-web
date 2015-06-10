@@ -1,10 +1,10 @@
 div(class='media' ng-repeat='comment in post.comments')
   div(class='media-left media-top')
     a(href='#/details/{{comment.user}}')
-      img(class='media-object', ng-src='{{post.image.thumbnail}}')
+      img(class='media-object', ng-src='http://lorempizza.com/64/64')
   div(class='media-body')
     h4(class='media-heading') 
       a(href='#/details/{{comment.user}}') {{comment.user}} 
-      small {{comment.created}}
+      small {{comment.created | date:'medium'}}
     p {{comment.text}}
 
