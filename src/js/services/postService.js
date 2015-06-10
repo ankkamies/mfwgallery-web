@@ -92,7 +92,7 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
   };
 
   this.updatePost = function(post, callback) {
-    $http.patch(sharedDataFactory.api + '/posts/' + post.id + '/', post)
+    $http.put(sharedDataFactory.api + '/posts/' + post.id + '/', post)
     .success(function(data) {
       callback(null);
     })
