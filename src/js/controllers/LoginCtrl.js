@@ -4,7 +4,7 @@ module.exports = function($scope, $location, authFactory) {
   // Call login once to check if we have cookied authentication data
   authFactory.login();
 
-  $scope.collapsed = false;
+  $scope.collapsed = true;
 
   $scope.user = {
     'username': null,

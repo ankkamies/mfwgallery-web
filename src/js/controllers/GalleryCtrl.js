@@ -5,8 +5,14 @@ module.exports = function($scope, $routeParams, $modal, postService, authFactory
 	$scope.user = {};
 	$scope.posts = [];
   $scope.image = '';
+  $scope.order = {'description': 'Newest first', 'ordering': '-created'};
 
-  postService.fetchPosts();
+  $scope.items = [
+    {'description': 'Newest first', 'ordering': '-created'},
+    {'description': 'Oldest first', 'ordering': 'created'}
+  ];
+
+  postService.fetchPosts($scope.order.ordering);
 
   $scope.openModal = function(image) {
     $scope.image = image
@@ -19,6 +25,15 @@ module.exports = function($scope, $routeParams, $modal, postService, authFactory
         }
       }
     });
+  }
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.select = function(choice) {
+    $scope.order = choice;
+    postService.fetchPosts($scope.order.ordering);
   }
 
   $scope.$on('postService:refresh', function() {

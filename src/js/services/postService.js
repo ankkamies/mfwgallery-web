@@ -9,8 +9,8 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
   var tags = [];
   var tag = {};
 
-  this.fetchPosts = function() {
-  	$http.get(sharedDataFactory.api + '/posts/')
+  this.fetchPosts = function(ordering) {
+  	$http.get(sharedDataFactory.api + '/posts/' + '?ordering=' + ordering)
   	.success(function(data) {
       posts = data;
       $rootScope.$broadcast('postService:refresh');
