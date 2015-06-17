@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
   var posts = [];
   var post = {};
@@ -13,7 +11,7 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
   	$http.get(sharedDataFactory.api + '/posts/' + '?ordering=' + ordering)
   	.success(function(data) {
       posts = data;
-      $rootScope.$broadcast('postService:refresh');
+      $rootScope.$broadcast('postService:refreshPosts');
   	})
     .error(function(data) {
       console.log(data);
@@ -24,7 +22,6 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
     $http.get(sharedDataFactory.api + '/posts/' + postId + '/')
     .success(function(data) {
       post = data;
-      console.log(post);
       $rootScope.$broadcast('postService:refreshPost');
     })
     .error(function(data) {
@@ -32,19 +29,7 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
     });
   };
 
-  this.fetchLatest = function() {
-    $http.get(sharedDataFactory.api + '/posts/')
-    .success(function(data) {
-      posts = data;
-      $rootScope.$broadcast('postService:refresh');
-    })
-    .error(function(data) {
-      console.log(data);
-    });
-  };
-
   this.fetchTags = function() {
-    console.log('fetching tags');
     $http.get(sharedDataFactory.api + '/tags/')
     .success(function(data) {
       tags = data;
@@ -59,7 +44,6 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
     $http.get(sharedDataFactory.api + '/tags/' + tagId + '/')
     .success(function(data) {
       tag = data;
-      console.log(tag);
       $rootScope.$broadcast('postService:refreshTag');
     })
     .error(function(data) {
@@ -157,8 +141,5 @@ module.exports = function($http, $rootScope, Upload, sharedDataFactory) {
     return post;
   };
 
-  this.getLatest = function() {
-    return _.first(posts, 5);
-  };
 };
 

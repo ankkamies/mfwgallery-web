@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 module.exports = function($http, $rootScope, $localStorage, $timeout, sharedDataFactory, base64Factory) {
   // Current user object
   var settings = {

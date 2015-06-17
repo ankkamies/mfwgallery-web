@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 module.exports = function($http, $rootScope, sharedDataFactory) {
   var users = [];
   var posts = [];

@@ -28,6 +28,8 @@ div(class='container')
         div(class='col-md-12')
           button(class='btn btn-primary', ng-click='updatePost()') Update post
           button(class='btn btn-danger pull-right', ng-click='removePost()') Remove post
+          p
+          alert(ng-repeat='alert in alerts', type='{{alert.type}}', close='closeAlert($index)') {{alert.msg}}
     div(class='col-md-6')
       div(class='row')
         div(class='col-md-12')

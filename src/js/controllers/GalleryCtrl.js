@@ -36,8 +36,12 @@ module.exports = function($scope, $routeParams, $modal, postService, authFactory
     postService.fetchPosts($scope.order.ordering);
   }
 
-  $scope.$on('postService:refresh', function() {
+  $scope.$on('postService:refreshPosts', function() {
   	$scope.posts = postService.returnPosts();
+  });
+
+  $scope.$on('postService:refresh', function() {
+    postService.fetchPosts();
   });
 
 };

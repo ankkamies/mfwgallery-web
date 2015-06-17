@@ -5,7 +5,7 @@ div(class='row')
       a(href class='dropdown-toggle', dropdown-toggle)  {{ order.description }}
       ul(class='dropdown-menu')
         li(ng-repeat='choice in items')
-          a(ng-click='select(choice)'){{ choice.description }}
+          a(ng-click='select(choice)') {{ choice.description }}
 div(class='row')
   div(class='col-xs-12')
     div(class='item' ng-repeat='post in posts')
