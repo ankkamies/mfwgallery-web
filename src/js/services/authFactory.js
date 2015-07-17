@@ -6,9 +6,6 @@ module.exports = function($http, $rootScope, $localStorage, $timeout, sharedData
     user: {},
   };
 
-  // Initialize authentication headers
-  $http.defaults.headers.common.Authorization = 'Basic ';
-
   var clearUser = function() {
     for (var prop in settings.user) {
       if (settings.user.hasOwnProperty(prop)) {
